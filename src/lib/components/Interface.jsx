@@ -61,7 +61,7 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
       disabled={item.link === false}
       icon={item.icon || Icons.Info}
       className={`SideBarLinks ${item.anim || ""}`}
-      routerLink={item.link || false}
+      component={item.link || false}
       active={path.startsWith(item.path || "nc")}
     >
       {item.name || "Inconnu"}
