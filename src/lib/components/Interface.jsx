@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import * as Icons from "react-feather";
+import { AlignLeft, Info, LogOut, X, XCircle } from "react-feather";
 import Animate from "react-smooth";
 
 import { Olympe } from "../";
@@ -59,7 +59,7 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
     <MenuItem
       key={item.name}
       disabled={item.link === false}
-      icon={item.icon || Icons.Info}
+      icon={item.icon || <Info />}
       className={`SideBarLinks ${item.anim || ""}`}
       component={item.link || false}
       active={path.startsWith(item.path || "nc")}
@@ -83,12 +83,12 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
           {
             isCancel: true,
             label: "Annuler",
-            icon: <Icons.XCircle />,
+            icon: <XCircle />,
             exec: closeModal
           },
           {
             label: "Déconnexion",
-            icon: <Icons.LogOut />,
+            icon: <LogOut />,
             exec: exitSessions
           }
         ]}
@@ -101,7 +101,7 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
               {!collapsed && <h1>Olympe - {context.corp.infos.permRole}</h1>}
 
               <Olympe.Button.Basic
-                icon={!collapsed ? <Icons.X /> : <Icons.AlignLeft />}
+                icon={!collapsed ? <X /> : <AlignLeft />}
                 toExecute={collapseSidebar}
               />
             </AccountPresentation>
@@ -135,7 +135,7 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
                     <p>{context.corp.infos.name}</p>
                     <Olympe.Button.Basic
                       label="Déconnexion"
-                      icon={<Icons.LogOut />}
+                      icon={<LogOut />}
                       toExecute={() => setOpen(true)}
                     />
                   </>
@@ -150,7 +150,7 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
             <div className="SubMenu">
               <Olympe.Button.Basic
                 label="Déconnexion"
-                icon={<Icons.LogOut />}
+                icon={<LogOut />}
                 toExecute={() => setOpen(true)}
               />
             </div>
