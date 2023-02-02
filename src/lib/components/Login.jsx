@@ -2,7 +2,6 @@ import React from "react";
 import { LogIn } from "react-feather";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 
 import { Olympe } from "../";
@@ -31,19 +30,21 @@ export default function LoginPage () {
     }
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setSent(true);
-    axios
-      .post(
-        "https://api.damien-vergobbi.fr/v1/login/",
-        { pwd: data.pswd },
-        {
-          auth: {
-            username: data.clid
-          }
-        }
-      )
-      .then(({ data }) => {
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Basic " + btoa(data.clid + ":empty")
+      },
+      body: JSON.stringify({ pwd: data.pswd })
+    };
+
+    fetch("https://api.damien-vergobbi.fr/v1/login/", requestOptions)
+      .then((response) => response.text())
+      .then((data) => {
         if (
           typeof data === "string" &&
           data !== "false" &&
@@ -78,7 +79,12 @@ export default function LoginPage () {
     <Olympe.Fade>
       <ContainerLogin>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <img src={Olympe.Color.logoLight} alt="Chargement" height={80} width={80} />
+          <img
+            src={Olympe.Color.logoLight}
+            alt="Chargement"
+            height={80}
+            width={80}
+          />
 
           <div className="basicInput">
             <Olympe.Input.Text
