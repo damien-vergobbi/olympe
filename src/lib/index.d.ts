@@ -1,3 +1,5 @@
-declare module 'olympe' {
-    export const Olympe: object
+import { Olympe } from ".";
+
+declare module olympe {
+    Olympe
 }

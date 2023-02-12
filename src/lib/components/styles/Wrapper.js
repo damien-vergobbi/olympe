@@ -8,8 +8,9 @@ export const Wrapper = styled.div`
   width: 70%;
   min-height: 500px;
 
-  ${({ horizontal = false }) =>
+  ${({ horizontal = false, children = [] }) =>
     horizontal &&
+    children.length === 1 &&
     css`
       width: 90%;
       height: calc(var(--vh, 1vh) * 100 - 70px);
@@ -20,6 +21,39 @@ export const Wrapper = styled.div`
       }
 
       > div {
+        > div:first-child {
+          flex: 35%;
+          max-width: 40%;
+        }
+        > div:last-child {
+          flex: 55%;
+          max-width: 60%;
+        }
+
+        @media screen and (max-width: 1010px) {
+          > div:first-child,
+          > div:last-child {
+            height: 500px;
+            flex: 90%;
+            max-width: 90%;
+          }
+        }
+      }
+    `}
+
+  ${({ horizontal = false, children = [] }) =>
+    horizontal &&
+    children.length > 1 &&
+    css`
+      width: 90%;
+      height: auto;
+      justify-content: center;
+
+      @media screen and (max-width: 1010px) {
+        height: initial;
+      }
+
+      > div.listItem {
         > div:first-child {
           flex: 35%;
           max-width: 40%;
