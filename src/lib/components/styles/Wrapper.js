@@ -8,9 +8,9 @@ export const Wrapper = styled.div`
   width: 70%;
   min-height: 500px;
 
-  ${({ horizontal = false, children = [] }) =>
+  ${({ horizontal = false, multiple = false }) =>
     horizontal &&
-    children.length === 1 &&
+    !multiple &&
     css`
       width: 90%;
       height: calc(var(--vh, 1vh) * 100 - 70px);
@@ -41,9 +41,9 @@ export const Wrapper = styled.div`
       }
     `}
 
-  ${({ horizontal = false, children = [] }) =>
+  ${({ horizontal = false, multiple = false }) =>
     horizontal &&
-    children.length > 1 &&
+    multiple &&
     css`
       width: 90%;
       height: auto;
@@ -116,7 +116,7 @@ export const Wrapper = styled.div`
       }
     `}
 
-@media screen and (max-width: 1205px) {
+  @media screen and (max-width: 1205px) {
     width: 80%;
   }
 

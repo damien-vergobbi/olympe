@@ -10,6 +10,7 @@ export function MainWrapper (props) {
         onSubmit={props.onSubmit || null}
         horizontal={props.horizontal}
         centered={props.centered}
+        multiple={props.multiple}
       >
         {props.children || <p>Une erreur est survenue.</p>}
       </Wrapper>
