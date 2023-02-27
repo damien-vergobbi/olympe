@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -36,12 +36,6 @@ export default function Interface ({ MainContext = null, ListItem = [] }) {
   const [logout, setLogout] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const closeModal = () => setOpen(false);
-
-  useEffect(() => {
-    document
-      .getElementById("outletid")
-      ?.scrollIntoView({ behavior: "instant" });
-  }, [location]);
 
   const exitSessions = () => {
     setLogout(true);
