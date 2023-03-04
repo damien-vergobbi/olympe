@@ -10,6 +10,7 @@ export const Modal = ({
   title = "Modal",
   content = "Validez-vous l'action ?",
   loading = false,
+  large = false,
   buttons = [],
   verifTxt = "",
   open = () => false,
@@ -43,6 +44,7 @@ export const Modal = ({
       open={open}
       closeOnDocumentClick={closeOnDocumentClick}
       onClose={onClose}
+      className={large ? "large" : ""}
     >
       <ModalContainer>
         <div className="header">{title}</div>

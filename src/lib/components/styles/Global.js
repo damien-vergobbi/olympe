@@ -47,11 +47,16 @@ export const GlobalStyles = createGlobalStyle`
       border: 2px solid ${Colors.secondary} !important;
       color: ${Colors.light};
       padding: 20px 25px !important;
-
+      
+      &.large-content {
+        max-width: 50%;
+      }
+      
       @media screen and (max-width: 700px) {
         max-width: 100%;
         width: 100%;
       }
     }
+
   }
 `;
