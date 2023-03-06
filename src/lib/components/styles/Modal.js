@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
     font-size: 0.9rem;
 
     strong {
-        color: ${Colors.blueLight};
+      color: ${Colors.blueLight};
     }
 
     input[type="text"] {

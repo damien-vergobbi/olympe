@@ -41,6 +41,8 @@ export const GlobalStyles = createGlobalStyle`
 
     .popup-content {
       max-width: 30%;
+      max-height: calc(var(--vh, 1vh) * 100 - 70px);
+      overflow-y: auto;
       animation: ${anvil} 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
       border-radius: 10px;
       background-color: ${Colors.dark} !important;
@@ -51,7 +53,7 @@ export const GlobalStyles = createGlobalStyle`
       &.large-content {
         max-width: 50%;
       }
-      
+
       @media screen and (max-width: 700px) {
         max-width: 100%;
         width: 100%;
